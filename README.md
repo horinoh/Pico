@@ -1,9 +1,5 @@
 # Pico
 
-## Grove
-- [Grove](https://files.seeedstudio.com/wiki/Grove_Shield_for_Pi_Pico_V1.0/Begiinner%27s-Guide-for-Raspberry-Pi-Pico.pdf
-)
-
 ## Python
 ### 環境
 - [Thonny](https://thonny.org/) をインストール
@@ -25,6 +21,10 @@
 -->
 ### 開発
 - Pico を PC と USB で接続 - Thonny を立ち上げる - ツールバーから Stop/Restart back-end process ボタンを押す - シェルエリアに出力が出れば成功
+
+### Grove
+- [Grove](https://files.seeedstudio.com/wiki/Grove_Shield_for_Pi_Pico_V1.0/Begiinner%27s-Guide-for-Raspberry-Pi-Pico.pdf
+)
 
 ## C++
 ### 環境
@@ -48,8 +48,8 @@
 - 左のサイドバーから CMake (三角アイコン)をクリック - ツリーからビルドしたい elf を選択 - 選択した右側にビルドのアイコンが出るのでクリックしてビルド
     - ツリーの一番上にある Build All Projects ボタンを押すと全ビルドになる
 
-##### Pico W のビルド
-- pico_w のビルドをするには 環境変数 PICO_BOARD  をセットする
+##### Pico W のサンプルをビルドするには
+- 環境変数 PICO_BOARD をセットする (pico-examples 以下のファイルを書き換えたくないので、こちらを採用した)
     ~~~
     pico_w
     ~~~
@@ -57,15 +57,31 @@
     ~~~
     set(PICO_BOARD "pico_w")
     ~~~
-    - pico-examples 以下のファイルを書き換えたくないので環境変数を採用した
 
-#### サンプルの実行
+#### 実行
 - ビルド結果(.uf2, .elf)は pico-examples/build 以下に出力される
-
 ##### Debug (.elf)
-- 左のサイドバーから Run and Debug (▶と虫)をクリック - 左側の上部に緑の▶があるので押す - 初回は実行するターゲットの選択を促されるので選択して実行
-- ターゲットを変更したい場合(2回目以降)は、一番下の青いツールバー中央あたりにターゲット選択のボタンがあるのでそこで選択する
-
+- Debug Probe を接続
+    - Pico wh の場合は SWD (Serial Wire Debug) があるので、Pico wh と Debug Probe を SWD で接続する
+    - Debug Probe を PC と USB 接続する
+    - Pico への USB 接続は単に電源供給目的
+        - 間に Debug Probe を介して、PC と Pico が繋がる形となる
+        - PC -(USB)- Debug Probe -(SWD)- Pico
+- 左のサイドバーから Run and Debug (▶と虫)をクリック - 左側の上部に緑の▶があるので押す、もしくは F5
+    - 初回は実行するターゲットの選択を促されるので選択して実行
+    - 2回目以降、ターゲットを変更したい場合は、一番下の青いツールバー中央あたりにターゲット選択のボタンがあるのでそこで選択する
+- 実行すると画面上部中央に操作パネルが出る (ほぼ Visual Studio と同じキーバインド)
+    - Contine(F5), Step Over(F10), Steo Into(F11), Step Out(Shift + F11),...
+- 出力 (printf)
+    - 下半分のウインドウの上部にあるツールバー - SERIAL MONITOR を選択
+    - シリアルデバイスで適切な COM を選択して - Start Monitoring を押すと出力される
+        ~~~
+        ---- Opened the serial port COM5 ----
+        Hello, world!
+        Hello, world!
+        Hello, world!
+        ...
+        ~~~
 ##### Release (.uf2)
 - BOOTSEL ボタンを押しながら Windows と USB 接続する
 - RPI-RP2 フォルダがリムーバブルディスクとして現れるので、.uf2 ファイルをコピーする
@@ -88,11 +104,3 @@
             main.c
             ~~~
 
-### デバッグ
-<!--
-- 接続
-    - Pico と [Debug Probe](https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html) を SWD(Serial Wire Debug) 接続する
-    - Debug Probe の USB を PC と接続
-    - Pico の USB は給電用
-- 左のサイドバーから Run and Debug - 左上部の緑の▶でデバッグ開始
--->
