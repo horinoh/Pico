@@ -6,7 +6,7 @@
     - 起動して一番下の Configure interpreter ... から MicroPython (Raspberry Pi Pico) を選択
 - ファームウェア
     - BOOTSEL ボタンを押しながら Windows と USB 接続する
-    - RPI-RP2 フォルダがリムーバブルディスクとして現れるので、INDEX.HTM を開く - MicroPython からファームウェアをダウンロード
+    - RPI-RP2 フォルダがリムーバブルディスクとして現れるので、[INDEX.HTM](https://www.raspberrypi.com/documentation/microcontrollers/micropython.html) を開く - MicroPython からファームウェアをダウンロード
     - ダウンロードしたファームウェアを RPI-RP2 フォルダへドラッグ
 <!--
 - ライブラリ
