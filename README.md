@@ -6,8 +6,8 @@
     - 起動して一番下の Configure interpreter ... から MicroPython (Raspberry Pi Pico) を選択
 - ファームウェア
     - BOOTSEL ボタンを押しながら Windows と USB 接続する
-    - RPI-RP2 フォルダがリムーバブルディスクとして現れるので、[INDEX.HTM](https://www.raspberrypi.com/documentation/microcontrollers/micropython.html) を開く - MicroPython からファームウェアをダウンロード
-    - ダウンロードしたファームウェアを RPI-RP2 フォルダへドラッグ
+    - RPI-RP2 フォルダがリムーバブルディスクとして現れるので、[INDEX.HTM を開く - MicroPython](https://www.raspberrypi.com/documentation/microcontrollers/micropython.html)  からファームウェアをダウンロード
+    - ダウンロードしたファームウェアを RPI-RP2 フォルダへドラッグ & ドロップ
 <!--
 - ライブラリ
     - [16x2 LCD Library](http://47.106.166.129/Embeded/pico-micropython-grove/blob/master/I2C/lcd1602.py)
@@ -31,11 +31,10 @@
 - [ドキュメント](https://www.raspberrypi.com/documentation/microcontrollers/c_sdk.html)
 - [pico-setup-windows](https://github.com/raspberrypi/pico-setup-windows) から pico-setup-windows-x64-standalone.exe をダウンロードして実行
     - サンプル (pico-examples) も取得しておく
-- 環境変数 PICO_SDK_PATH をセットする
-    - 通常インストールなら以下のような場所になるはず
-        ~~~
-        C:\Program Files\Raspberry Pi\Pico SDK v1.5.1\pico-sdk
-        ~~~
+- 環境変数 PICO_SDK_PATH をセットする、通常インストールなら以下のような場所になるはず
+    ~~~
+    C:\Program Files\Raspberry Pi\Pico SDK v1.5.1\pico-sdk
+    ~~~
 
 #### サンプルのビルド
 - スタートメニューに Pico Developer Power Shell ができているので起動、以下のコマンドで VSCode を起動する
@@ -44,9 +43,9 @@
     ~~~
 - VSCode で pico-examples フォルダを開く
 - 一番下の青いツールバー
-    - Kit の選択で PICO ARM GCC Pico SDK Toolchain with GCC arm-none-eabi entry を選択
+    - Kit の選択で "PICO ARM GCC Pico SDK Toolchain with GCC arm-none-eabi entry" を選択
 - 左のサイドバーから CMake (三角アイコン)をクリック - ツリーからビルドしたい elf を選択 - 選択した右側にビルドのアイコンが出るのでクリックしてビルド
-    - ツリーの一番上にある Build All Projects ボタンを押すと全ビルドになる
+    - ツリーの一番上にある "Build All Projects" ボタンを押すと全ビルドになる
 
 ##### Pico W のサンプルをビルドするには
 - 環境変数 PICO_BOARD をセットする (pico-examples 以下のファイルを書き換えたくないので、こちらを採用した)
@@ -71,10 +70,10 @@
     - 初回は実行するターゲットの選択を促されるので選択して実行
     - 2回目以降、ターゲットを変更したい場合は、一番下の青いツールバー中央あたりにターゲット選択のボタンがあるのでそこで選択する
 - 実行すると画面上部中央に操作パネルが出る (ほぼ Visual Studio と同じキーバインド)
-    - Contine(F5), Step Over(F10), Steo Into(F11), Step Out(Shift + F11),...
+    - Contine(F5), Step Over(F10), Steo Into(F11), Step Out(Shift + F11), 等...
 - 出力 (printf)
-    - 下半分のウインドウの上部にあるツールバー - SERIAL MONITOR を選択
-    - シリアルデバイスで適切な COM を選択して - Start Monitoring を押すと出力される
+    - 下半分のウインドウの上部にあるツールバー - "SERIAL MONITOR" を選択
+    - シリアルデバイスで適切な COM を選択して - "Start Monitoring" を押すと出力される
         ~~~
         ---- Opened the serial port COM5 ----
         Hello, world!
@@ -84,9 +83,9 @@
         ~~~
 ##### Release (.uf2)
 - BOOTSEL ボタンを押しながら Windows と USB 接続する
-- RPI-RP2 フォルダがリムーバブルディスクとして現れるので、.uf2 ファイルをコピーする
+- .uf2 ファイルを RPI-RP2 フォルダへドラッグ & ドロップ
 
-### 開発
+#### 自前環境のビルド 
 - ここでは親フォルダを C とした
     - C 以下に pico-sdk/external/pico_sdk_import.cmake をコピーする
     - C 以下に pico-examples/.vscode をフォルダごとコピーする
@@ -96,11 +95,13 @@
     $code
     ~~~
     - 一番下の青いツールバー
-        - Kit の選択で GCC XXX arm-none-eabi を選択
-    - C 以下にサブフォルダ作成、ここでは Hello とする
+        - Kit の選択で "GCC XXX arm-none-eabi" を選択
+    - C 以下にサブフォルダ作成、ここでは Hello を例とする
         - Hello 直下に以下のファイルを作成する
             ~~~
             CMakeLists.txt
             main.c
             ~~~
+#### 自前環境の実行
+- 上記サンプルの実行と手順は同じ
 
