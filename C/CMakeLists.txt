@@ -11,3 +11,4 @@ pico_sdk_init()
 
 add_subdirectory(Hello)
 add_subdirectory(LED)
+add_subdirectory(Temperature)

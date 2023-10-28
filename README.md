@@ -56,6 +56,8 @@
     ~~~
     set(PICO_BOARD "pico_w")
     ~~~
+###### WIFI のサンプルをビルドするには
+- 環境変数 WIFI_SSID, WIFI_PASSWORD をセットする
 
 #### 実行
 - ビルド結果(.uf2, .elf)は pico-examples/build 以下に出力される
