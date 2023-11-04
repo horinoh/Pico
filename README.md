@@ -58,6 +58,7 @@
     ~~~
 ###### WIFI のサンプルをビルドするには
 - 環境変数 WIFI_SSID, WIFI_PASSWORD をセットする
+- CMake の target_compile_definitions() で定義が作られる
 
 #### 実行
 - ビルド結果(.uf2, .elf)は pico-examples/build 以下に出力される
