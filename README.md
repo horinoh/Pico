@@ -56,6 +56,10 @@
     ~~~
     set(PICO_BOARD "pico_w")
     ~~~
+- 戻す場合には以下のようにセットする
+    ~~~
+    pico
+    ~~~
 ###### WIFI のサンプルをビルドするには
 - 環境変数 WIFI_SSID, WIFI_PASSWORD をセットする
 - CMake の target_compile_definitions() で定義が作られる

@@ -1,21 +1,23 @@
-
-set(ProjectName "Hello")
+set(ProjectName "Wifi")
 add_executable(${ProjectName}
         main.c
         )
 
-# pull in common dependencies
 target_link_libraries(${ProjectName} 
         pico_stdlib
+        pico_cyw43_arch_none
+        #pico_cyw43_arch_lwip_poll
+        #pico_cyw43_arch_lwip_threadsafe_background
+        #pico_lwip_iperf
         )
 
-# USB CDC(USBシリアル) 軽油での出力を有効化
+# 環境変数 WIFI_SSID, WIFI_PASSWORD から 定義 WIFI_SSID, WIFI_PASSWORD を作る
+target_compile_definitions(${ProjectName} PRIVATE
+            WIFI_SSID=\"${WIFI_SSID}\"
+            WIFI_PASSWORD=\"${WIFI_PASSWORD}\"
+            )
+            
 pico_enable_stdio_usb(${ProjectName} 1)
-# UART 経由での出力を無効化
 pico_enable_stdio_uart(${ProjectName} 0)
 
-# create map/bin/hex/uf2 file etc.
 pico_add_extra_outputs(${ProjectName})
-
-# add url via pico_set_program_url
-#example_auto_set_url(${ProjectName})

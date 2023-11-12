@@ -14,4 +14,3 @@ pico_enable_stdio_uart(${ProjectName} 0)
 
 pico_add_extra_outputs(${ProjectName})
 
-#example_auto_set_url(${ProjectName})
