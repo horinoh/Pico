@@ -10,11 +10,13 @@ add_executable(${ProjectName}
 # ヘッダファイル (XXX.pio.h) が生成されるので、C 側でインクルードして使用する
 pico_generate_pio_header(${ProjectName}
         ${CMAKE_CURRENT_LIST_DIR}/${AssemblerName}.pio
+        # ヘッダファイルをカレントディレクトリへ出力する場合 (デフォルトは build フォルダ以下)
+        OUTPUT_DIR ${CMAKE_CURRENT_LIST_DIR}
         )
 
-# hardware_pio を追加すること
 target_link_libraries(${ProjectName} 
         pico_stdlib
+        # hardware_pio を追加すること
         hardware_pio
         )
 
