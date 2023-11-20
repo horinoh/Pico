@@ -1,0 +1,19 @@
+.program PWM
+.side_set 1 opt
+
+.wrap_target
+    ; FIFO から OSR へ、ノンブロッキングなので FIFO に無い場合は X の値が OSR へコピーされる、サイドセットは 0
+    pull noblock    side 0 
+    ; X には最新の OSR 値、もしくは前回の X の値そのままになる (FIFO から取得できたかどうかによる)
+    mov x, osr             
+    ; ISR には「期間」が入っている、Y はカウンタとして使用 (ここでは入力として ISR を使用していないので、「期間」を保持する領域として活用している)
+    mov y, isr             
+loop:
+    ; X == Y の時以外は何もしない
+    jmp x!=y skip
+    ; X == Y となったらここに来る サイドセットを 1
+    nop side 1                
+skip:
+    ; 「期間」カウンタ Y が 0 になるまでループ
+    jmp y-- loop     
+.wrap

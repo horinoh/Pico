@@ -8,15 +8,9 @@
 //!< pioasm により自動生成される
 #include "LED.pio.h"
 
-//!< ピン 25 を使用している為 Pico W 非対応
-
-//!< "pull (ifempty) (block)" と同等
-//pio_sm_exec(Pio, Sm, pio_encode_pull(ifempty, false));
-//!< "out (dest), (count)" と同等
-//pio_sm_exec(Pio, Sm, pio_encode_out(dest, count));
-
 int main() 
 {
+    //!< ピン 25 を使用している為 Pico W 非対応
 #ifndef PICO_DEFAULT_LED_PIN
 #warning Pico W not supported
 #else
