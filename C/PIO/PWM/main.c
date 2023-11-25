@@ -53,7 +53,7 @@ int main()
     SetPeriod(Pio, Sm, (1u << 16) - 1);
     int Level = 0;
     while (true) {
-        printf("Level = %d\n", Level);
+        //printf("Level = %d\n", Level);
         pio_sm_put_blocking(Pio, Sm, Level * Level);
         Level = ++Level % 256;
         sleep_ms(10);

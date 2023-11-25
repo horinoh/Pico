@@ -3,13 +3,19 @@ add_executable(${ProjectName}
         main.c
         )
 
-target_link_libraries(${ProjectName} 
-        pico_stdlib
-        pico_cyw43_arch_none
-        #pico_cyw43_arch_lwip_poll
-        #pico_cyw43_arch_lwip_threadsafe_background
-        #pico_lwip_iperf
+if(${PICO_BOARD} STREQUAL pico_w)
+        target_link_libraries(${ProjectName} 
+                pico_stdlib
+                pico_cyw43_arch_none
+                #pico_cyw43_arch_lwip_poll
+                #pico_cyw43_arch_lwip_threadsafe_background
+                #pico_lwip_iperf
         )
+else()
+       target_link_libraries(${ProjectName} 
+                pico_stdlib
+        )
+endif()
 
 # 環境変数 WIFI_SSID, WIFI_PASSWORD から 定義 WIFI_SSID, WIFI_PASSWORD を作る
 target_compile_definitions(${ProjectName} PRIVATE

@@ -14,4 +14,7 @@ add_subdirectory(LED)
 add_subdirectory(Button)
 add_subdirectory(Temperature)
 add_subdirectory(Wifi)
+add_subdirectory(PWM)
+add_subdirectory(MultiCore)
+
 add_subdirectory(PIO)
